@@ -152,9 +152,9 @@ export const PortfolioPage: React.FC = () => {
       .insert([formData]);
 
     if (error) {
-      setStatus(`Ошибка: ${error.message}`);
+      setStatus(`Error: ${error.message}`);
     } else {
-      setStatus('Сообщение успешно отправлено!');
+      setStatus('Message sent successfully!');
       setFormData({ name: '', email: '', phone: '', message: '' });
     }
   };
@@ -176,13 +176,11 @@ export const PortfolioPage: React.FC = () => {
 
             <div className="space-y-4 max-w-2xl">
               <p className="text-xs font-black uppercase tracking-[0.2em] text-yellow-400 sm:text-sm animate-pulse">
-                Frontend Developer Портфолио
+                Fullstack Developer 
               </p>
-              <h1 className="text-3xl font-extrabold tracking-tight text-gray-100 sm:text-4xl md:text-6xl leading-[1.1]">
-                Привет, я Юрий. <br />Создаю <span className="text-yellow-400">современные интерфейсы</span>
+              <h1 className="text-3xl font-extrabold tracking-tight text-gray-100 sm:text-4xl md:text-6xl leading-[1.1]">Hi, I'm Yuriy<br />I build <span className="text-yellow-400">modern interfaces</span>
               </h1>
-              <p className="text-xs text-slate-300 sm:text-sm md:text-base leading-relaxed">
-                Специализируюсь на экосистеме React, TypeScript и интеграции с облачными бэкендами. Успешно сдал 100% практических работ в процессе обучения.
+              <p className="text-xs text-slate-300 sm:text-sm md:text-base leading-relaxed">Fullstack Developer specializing in React, TypeScript, and cloud backends
               </p>
               <div className="pt-2">
                 <a href="/87536745_en (1).pdf" download className="inline-flex items-center justify-center rounded bg-yellow-400 px-6 py-3 text-xs font-bold text-slate-900 transition-all shadow-md hover:bg-yellow-300 active:scale-95 duration-150 sm:text-sm">
@@ -223,17 +221,17 @@ export const PortfolioPage: React.FC = () => {
 
         {/* Центральная колонка: Описание стека */}
         <section id="about" className="md:col-span-6 rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-          <h2 className="text-lg font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4 md:text-xl">Обо мне</h2>
+          <h2 className="text-lg font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4 md:text-xl">About Me</h2>
           <div className="space-y-4 text-xs text-slate-600 leading-relaxed sm:text-sm">
             <p>
-              Разрабатываю быстрые SPA-приложения с использованием современного сборщика Vite. Имею глубокие знания типизации данных в TypeScript и утилитарных стилей Tailwind CSS.
+              I develop fast SPA applications using the modern Vite builder. I have a deep understanding of data typing in TypeScript and utility styles in Tailwind CSS.
             </p>
           </div>
         </section>
 
         {/* Правая колонка: Валидная форма контактов */}
         <section id="contact" className="h-fit md:col-span-3 rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-          <h2 className="text-base font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4 md:text-lg">Контакты</h2>
+          <h2 className="text-base font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4 md:text-lg">Contact</h2>
           <form onSubmit={handleSubmit} className="space-y-3">
             <div>
               <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Name</label>
@@ -249,7 +247,7 @@ export const PortfolioPage: React.FC = () => {
             </div>
             <div>
               <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Message</label>
-              <textarea rows={3} required value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} placeholder="Опишите задачу..." className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-xs outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 resize-none sm:text-sm" />
+              <textarea rows={3} required value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} placeholder="Describe the task..." className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-xs outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 resize-none sm:text-sm" />
             </div>
             <button type="submit" className="w-full rounded bg-slate-900 py-2.5 text-xs font-bold text-white shadow transition-colors hover:bg-slate-800 active:scale-[0.98] sm:text-sm">
               Send Message
