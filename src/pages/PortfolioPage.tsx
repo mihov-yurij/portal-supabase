@@ -1,141 +1,3 @@
-// import React, { useState } from 'react';
-// import { supabase } from '../lib/supabase';
-
-// export const PortfolioPage: React.FC = () => {
-//   // 1. Стейт теперь содержит ВСЕ нужные поля: имя, почта, телефон и сообщение
-//   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
-//   const [status, setStatus] = useState('');
-
-//   const handleSubmit = async (e: React.FormEvent) => {
-//     e.preventDefault();
-//     setStatus('Отправка...');
-    
-//     // 2. Отправляем полный объект со всеми четырьмя полями в Supabase
-//     const { error } = await supabase
-//       .from('contacts')
-//       .insert([formData]);
-
-//     if (error) {
-//       setStatus('Ошибка: ' + error.message);
-//     } else {
-//       setStatus('Сообщение успешно отправлено!');
-//       setFormData({ name: '', email: '', phone: '', message: '' });
-//     }
-//   };
-
-//   return (
-//     <div className="flex flex-col font-sans bg-slate-50 min-h-screen w-full">      
-      
-//       {/* HERO SECTION */}
-//       <section className="bg-[#1a2c3d] text-white py-16 px-6 flex items-center relative overflow-hidden motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-12 duration-1000 w-full">
-//         <div className="absolute top-0 right-0 w-[280px] h-[280px] sm:w-[500px] sm:h-[500px] bg-blue-500/10 rounded-full -mr-32 -mt-32 blur-[80px] sm:blur-[120px]"></div>        
-//         <div className="container mx-auto relative z-10 flex flex-col items-center text-center">
-//           <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden mb-6 border-4 border-yellow-400 shadow-xl">
-//             <img src="/my-photo.jpg" alt="Yurij Avatar" className="w-full h-full object-cover" />
-//           </div>
-//           <div className="max-w-3xl space-y-4">
-//             <p className="text-yellow-400 font-black uppercase tracking-[0.2em] text-xs sm:text-sm animate-pulse">Frontend Developer Портфолио</p>
-//             <h1 className="text-3xl sm:text-6xl font-bold leading-[1.1] tracking-tighter text-gray-100">
-//               Привет, я Юрий. <br />Создаю <span className="text-yellow-400">современные интерфейсы</span>
-//             </h1>
-//             <p className="max-w-xl mx-auto text-xs sm:text-base text-slate-300 leading-relaxed pt-2">
-//               Специализируюсь на экосистеме React, TypeScript и интеграции с облачными бэкендами. Успешно сдал 69 из 69 практических работ в процессе обучения.
-//             </p>
-//             <div className="pt-4">
-//               <a href="/87536745_en (1).pdf" download className="inline-flex items-center justify-center px-6 py-3 text-xs sm:text-base font-bold rounded-md text-[#1a2c3d] bg-yellow-400 hover:bg-yellow-300 transition-colors shadow-lg active:scale-95 duration-150">
-//                 Download Resume
-//               </a>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* NAVIGATION BAR */}
-//       <nav className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm py-4 px-6 flex items-center justify-between gap-4 w-full">
-//         <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm font-semibold">
-//           <span className="text-blue-600 font-bold text-sm sm:text-lg">Portfolio</span>
-//           <a href="#projects" className="text-slate-600 hover:text-blue-600 transition-colors">Projects</a>
-//           <a href="#about" className="text-slate-600 hover:text-blue-600 transition-colors">About</a>
-//           <a href="#contact" className="text-slate-600 hover:text-blue-600 transition-colors">Contact</a>
-//         </div>
-//       </nav>
-
-//       {/* MAIN CONTENT (Responsive-сетка) */}
-//       <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-12 gap-8 w-full">
-        
-//         {/* Левая колонка */}
-//         <section id="projects" className="md:col-span-3">
-//           <h2 className="text-lg font-bold text-slate-900 mb-4 border-b pb-2">Projects</h2>
-//           <div className="bg-white rounded-lg border border-slate-200 p-4 shadow-sm text-center">
-//             <div className="bg-slate-100 aspect-video rounded flex items-center justify-center text-slate-400 mb-2 text-xs border border-dashed border-slate-300">
-//               [ University Portal Screen ]
-//             </div>
-//             <p className="text-sm font-medium text-slate-700">University Portal (ONMU)</p>
-//             <a href="https://github.com" target="_blank" rel="noreferrer" className="text-xs text-blue-600 hover:underline mt-2 inline-block">
-//               View on GitHub →
-//             </a>
-//           </div>
-//         </section>
-
-//         {/* Центральная колонка */}
-//         <section id="about" className="md:col-span-6 bg-white rounded-lg border border-slate-200 p-6 shadow-sm">
-//           <h2 className="text-xl font-bold text-slate-900 mb-4">Обо мне</h2>
-//           <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
-//             <p>
-//               Разрабатываю быстрые SPA-приложения с использованием сборщика Vite. Имею глубокие знания типизации данных в TypeScript и утилитарных стилей Tailwind CSS.
-//             </p>
-//           </div>
-//         </section>
-
-//         {/* Правая колонка — ПОЛНАЯ КОНТАКТНАЯ ФОРМА */}
-//         <section id="contact" className="md:col-span-3 bg-white rounded-lg border border-slate-200 p-6 shadow-sm h-fit">
-//           <h2 className="text-lg font-bold text-slate-900 mb-4 border-b pb-2">Контакты</h2>
-//           <form onSubmit={handleSubmit} className="space-y-4">
-//             <div>
-//               <label className="block text-xs font-semibold text-slate-600 uppercase mb-1">Name</label>
-//               <input 
-//                 type="text" required value={formData.name}
-//                 onChange={(e) => setFormData({...formData, name: e.target.value})}
-//                 className="w-full px-3 py-2 text-sm border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" 
-//               />
-//             </div>
-//             <div>
-//               <label className="block text-xs font-semibold text-slate-600 uppercase mb-1">Email</label>
-//               <input 
-//                 type="email" required value={formData.email}
-//                 onChange={(e) => setFormData({...formData, email: e.target.value})}
-//                 className="w-full px-3 py-2 text-sm border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" 
-//               />
-//             </div>
-//             <div>
-//               <label className="block text-xs font-semibold text-slate-600 uppercase mb-1">Phone</label>
-//               <input 
-//                 type="tel" value={formData.phone}
-//                 onChange={(e) => setFormData({...formData, phone: e.target.value})}
-//                 className="w-full px-3 py-2 text-sm border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" 
-//               />
-//             </div>
-//             {/* 3. Добавили текстовое поле для сути обращения (Message) */}
-//             <div>
-//               <label className="block text-xs font-semibold text-slate-600 uppercase mb-1">Message</label>
-//               <textarea 
-//                 rows={4} required value={formData.message}
-//                 onChange={(e) => setFormData({...formData, message: e.target.value})}
-//                 placeholder="Опишите вашу задачу..."
-//                 className="w-full px-3 py-2 text-sm border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white resize-none" 
-//               />
-//             </div>
-//             <button type="submit" className="w-full bg-slate-900 text-white text-sm font-semibold py-2.5 rounded hover:bg-slate-800 transition-colors shadow">
-//               Send Message
-//             </button>
-//             {status && <p className="text-xs text-center font-medium mt-2 text-blue-600">{status}</p>}
-//           </form>
-//         </section>
-
-//       </div>
-//     </div>
-//   );
-// };
 import React, { useState } from 'react';
 import { supabase } from '../lib/supabase';
 
@@ -145,21 +7,69 @@ export const PortfolioPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('Отправка...');
-    
+    setStatus('Sending...');
+
+    // 1. Сохраняем в базу данных Supabase
     const { error } = await supabase
       .from('contacts')
       .insert([formData]);
 
     if (error) {
       setStatus(`Error: ${error.message}`);
-    } else {
+      return;
+    }
+
+    try {
+      const token = import.meta.env.VITE_TELEGRAM_TOKEN?.trim();
+      const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID?.trim();
+      const formspreeId = import.meta.env.VITE_FORMSPREE_ID?.trim(); // ID формы из Formspree
+
+      const promises = [];
+
+      // 2. Добавляем в очередь Telegram (чистый fetch)
+      if (token && chatId) {
+        const text = `Новое сообщение!\nИмя: ${formData.name}\nEmail: ${formData.email}\nТелефон: ${formData.phone}\nСообщение: ${formData.message}`;
+        
+        const tgPromise = fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: chatId, text: text })
+        });
+        promises.push(tgPromise);
+      }
+
+      // 3. Добавляем в очередь отправку на Почту через чистый fetch (Formspree)
+      if (formspreeId) {
+        const emailPromise = fetch(`https://formspree.io${formspreeId}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            message: formData.message
+          })
+        });
+        promises.push(emailPromise);
+      }
+
+      // 4. Отправляем всё параллельно
+      await Promise.all(promises);
+
       setStatus('Message sent successfully!');
       setFormData({ name: '', email: '', phone: '', message: '' });
+
+    } catch (err) {
+      console.error('Ошибка отправки уведомлений:', err);
+      setStatus('Message saved, but notification failed.');
     }
   };
 
   return (
+
+
+
     <div className="min-h-screen bg-slate-50 text-slate-800 antialiased selection:bg-yellow-400 selection:text-slate-900">
       
       {/* HERO SECTION: Идеальный баланс Flexbox. На мобильных — контент центрирован в колонку, на десктопе (md:) — выровнен по левому краю */}
