@@ -4,6 +4,23 @@ import { supabase } from '../lib/supabase';
 export const PortfolioPage: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
   const [status, setStatus] = useState('');
+  // 1. Массив картинок (укажите свои импортированные переменные)
+const images = ['/assets/mor1.png', '/assets/mor2.png', '/assets/mor3.png','/assets/mor4.png','/assets/mor5.png','/assets/mor6.png','/assets/mor7.png']; // замените на ваши импорты
+
+// 2. Стейк для отслеживания текущего слайда
+const [currentIndex, setCurrentIndex] = useState(0);
+
+// 3. Функции переключения слайдов
+const nextSlide = (e: React.MouseEvent) => {
+  e.preventDefault();
+  setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+};
+
+const prevSlide = (e: React.MouseEvent) => {
+  e.preventDefault();
+  setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+};
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -93,9 +110,9 @@ export const PortfolioPage: React.FC = () => {
               <p className="text-xs text-slate-300 sm:text-sm md:text-base leading-relaxed">Fullstack Developer specializing in React, TypeScript, and cloud backends
               </p>
               <div className="pt-2">
-                <a href="/87536745_en (1).pdf" download className="inline-flex items-center justify-center rounded bg-yellow-400 px-6 py-3 text-xs font-bold text-slate-900 transition-all shadow-md hover:bg-yellow-300 active:scale-95 duration-150 sm:text-sm">
-                  Download Resume
-                </a>
+                <a href="/hillel-certificate.pdf" download className="inline-flex items-center ...">
+  Download Certificate
+</a>
               </div>
             </div>
           </div>
@@ -116,18 +133,56 @@ export const PortfolioPage: React.FC = () => {
       <main className="container mx-auto max-w-6xl px-4 py-8 md:py-12 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
         
         {/* Левая колонка: Проекты */}
-        <section id="projects" className="md:col-span-3">
-          <h2 className="text-base font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4 md:text-lg">Projects</h2>
-          <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md">
-            <div className="aspect-video w-full rounded-lg bg-slate-100 flex items-center justify-center text-xs text-slate-400 border border-dashed border-slate-300 font-mono mb-3">
-              [ University Portal Screen ]
-            </div>
-            <p className="text-sm font-semibold text-slate-800">University Portal (ONMU)</p>
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="mt-2 inline-block text-xs font-medium text-blue-600 hover:underline">
-              View on GitHub →
-            </a>
+<section id="projects" className="md:col-span-3">
+      <h2 className="text-base font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4 md:text-lg">Projects</h2>
+      <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md">
+        
+        {/* Контейнер слайдера */}
+        <div className="relative aspect-video w-full rounded-lg overflow-hidden border border-slate-200 mb-3 group">
+          <img 
+            src={images[currentIndex]} 
+            alt={`Project slide ${currentIndex + 1}`} 
+            className="h-full w-full object-cover transition-all duration-500"
+          />
+
+          {/* Кнопка Назад */}
+          <button 
+            onClick={prevSlide}
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-900/60 hover:bg-slate-900 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity text-xs"
+          >
+            ❮
+          </button>
+
+          {/* Кнопка Вперед */}
+          <button 
+            onClick={nextSlide}
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-900/60 hover:bg-slate-900 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity text-xs"
+          >
+            ❯
+          </button>
+
+          {/* Индикаторы (точки снизу) */}
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+            {images.map((_, index) => (
+              <div 
+                key={index}
+                className={`h-1.5 w-1.5 rounded-full transition-all ${currentIndex === index ? 'bg-white scale-125' : 'bg-white/50'}`}
+              />
+            ))}
           </div>
-        </section>
+        </div>
+
+        <p className="text-sm font-semibold text-slate-800">University Portal (ONMU)</p>
+        <a 
+          href="https://github.com" 
+          target="_blank" 
+          rel="noreferrer" 
+          className="mt-2 inline-block text-xs font-medium text-blue-600 hover:underline"
+        >
+          View on GitHub →
+        </a>
+      </div>
+    </section>
 
         {/* Центральная колонка: Описание стека */}
         <section id="about" className="md:col-span-6 rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
