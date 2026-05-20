@@ -174,11 +174,10 @@ const prevSlide = (e: React.MouseEvent) => {
 
         <p className="text-sm font-semibold text-slate-800">University Portal (ONMU)</p>
         <a 
-          href="https://github.com" 
+          href="https://github.com/mihov-yurij?tab=repositories" 
           target="_blank" 
           rel="noreferrer" 
-          className="mt-2 inline-block text-xs font-medium text-blue-600 hover:underline"
-        >
+          className="mt-2 inline-block text-xs font-medium text-blue-600 hover:underline">            
           View on GitHub →
         </a>
       </div>
@@ -188,8 +187,17 @@ const prevSlide = (e: React.MouseEvent) => {
         <section id="about" className="md:col-span-6 rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
           <h2 className="text-lg font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4 md:text-xl">About Me</h2>
           <div className="space-y-4 text-xs text-slate-600 leading-relaxed sm:text-sm">
-            <p>
-              I develop fast SPA applications using the modern Vite builder. I have a deep understanding of data typing in TypeScript and utility styles in Tailwind CSS.
+            <p>## PROFESSIONAL SUMMARY Result-oriented Fullstack Developer and certified graduate of Hillel IT School with 50+ verified GitHub contributions over the past 8th months. Prior to tech, spent over a decade as a Marine Engineer (Second Engineer) and Stevedore Mechanic, mastering complex system logic and cross-functional team leadership under pressure. Recently delivered my first commercial web application on freelance for the "Marine Business and Marketing" department at ONMU, successfully leveraging a strong engineering background into production-ready software development.
+               ## FREELANCE & COMMERCIAL EXPERIENCE
+                 * Freelance Fullstack Developer (2026 – Present)
+                 - Project: "Marine Business and Marketing" Department Web Portal (ONMU)
+                 - Key Achievements: Engineered a responsive, modern web application from scratch. Collected client requirements, established architecture, and delivered a production-ready system matching real-world business criteria.
+               ## EDUCATION & CERTIFICATIONS
+                 * Fullstack JavaScript Course | Hillel IT School (2025 – 2026)
+                 - Result: Successfully completed 100% of the practical curriculum (69 out of 69 advanced assignments) covering Frontend (React, TS), Backend (Node.js, Express), Databases (MongoDB), and Automated Testing.
+                 - Graduated with a "Very Good" diploma status and ranked #3 in the group metrics.
+                 * Master’s Degree in Port Engineering | Odessa National Maritime University (ONMU)
+                 * Bachelor’s Degree in Marine Engineering (Marine Power Plants) | ONMU
             </p>
           </div>
         </section>
