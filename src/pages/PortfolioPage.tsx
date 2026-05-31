@@ -174,11 +174,11 @@ const prevSlide = (e: React.MouseEvent) => {
 
         <p className="text-sm font-semibold text-slate-800">University Portal (ONMU)</p>
         <a 
-          href="https://github.com/mihov-yurij?tab=repositories" 
+          href="https://university-portal-self.vercel.app/" 
           target="_blank" 
           rel="noreferrer" 
           className="mt-2 inline-block text-xs font-medium text-blue-600 hover:underline">            
-          View on GitHub →
+          https://maritime-business.com.ua →
         </a>
       </div>
     </section>
