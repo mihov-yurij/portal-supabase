@@ -1,25 +1,19 @@
 import React, { useState } from 'react';
 import { supabase } from '../lib/supabase';
+import { ProjectCard } from '../components/ProjectCard';
+
+
+
 
 export const PortfolioPage: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
   const [status, setStatus] = useState('');
   // 1. Массив картинок (укажите свои импортированные переменные)
-const images = ['/assets/mor1.png', '/assets/mor2.png', '/assets/mor3.png','/assets/mor4.png','/assets/mor5.png','/assets/mor6.png','/assets/mor7.png']; // замените на ваши импорты
+  const images = ['/assets/mor1.png', '/assets/mor2.png', '/assets/mor3.png','/assets/mor4.png','/assets/mor5.png','/assets/mor6.png','/assets/mor7.png']; // замените на ваши импорты
+  const newProjectImages = ['/assets/new1.png', '/assets/new2.png', '/assets/new3.png']; // Массив картинок для второго проекта
 
-// 2. Стейк для отслеживания текущего слайда
-const [currentIndex, setCurrentIndex] = useState(0);
 
-// 3. Функции переключения слайдов
-const nextSlide = (e: React.MouseEvent) => {
-  e.preventDefault();
-  setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-};
 
-const prevSlide = (e: React.MouseEvent) => {
-  e.preventDefault();
-  setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-};
 
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -131,57 +125,19 @@ const prevSlide = (e: React.MouseEvent) => {
 
       {/* MAIN CONTENT GRID: 1 колонка по умолчанию на мобилках. Чистый md:grid-cols-12 делит экран на 3-6-3 секции на экранах от 768px */}
       <main className="container mx-auto max-w-6xl px-4 py-8 md:py-12 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
-        
-        {/* Левая колонка: Проекты */}
-<section id="projects" className="md:col-span-3">
-      <h2 className="text-base font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4 md:text-lg">Projects</h2>
-      <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md">
-        
-        {/* Контейнер слайдера */}
-        <div className="relative aspect-video w-full rounded-lg overflow-hidden border border-slate-200 mb-3 group">
-          <img 
-            src={images[currentIndex]} 
-            alt={`Project slide ${currentIndex + 1}`} 
-            className="h-full w-full object-cover transition-all duration-500"
+        <section id="projects" className="md:col-span-3">
+          <h2 className="text-base font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4 md:text-lg">Projects</h2>
+          <ProjectCard 
+            title="University Portal (ONMU)" 
+            images={images} 
+            link="https://www.maritimebusiness.com.ua/" 
           />
-
-          {/* Кнопка Назад */}
-          <button 
-            onClick={prevSlide}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-900/60 hover:bg-slate-900 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity text-xs"
-          >
-            ❮
-          </button>
-
-          {/* Кнопка Вперед */}
-          <button 
-            onClick={nextSlide}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-900/60 hover:bg-slate-900 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity text-xs"
-          >
-            ❯
-          </button>
-
-          {/* Индикаторы (точки снизу) */}
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
-            {images.map((_, index) => (
-              <div 
-                key={index}
-                className={`h-1.5 w-1.5 rounded-full transition-all ${currentIndex === index ? 'bg-white scale-125' : 'bg-white/50'}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        <p className="text-sm font-semibold text-slate-800">University Portal (ONMU)</p>
-        <a 
-          href="https://www.maritimebusiness.com.ua/" 
-          target="_blank" 
-          rel="noreferrer" 
-          className="mt-2 inline-block text-xs font-medium text-blue-600 hover:underline">            
-          https://www.maritimebusiness.com.ua/ →
-        </a>
-      </div>
-    </section>
+          <ProjectCard 
+            title="onmu-matcher" 
+            images={newProjectImages} 
+            link="https://onmu-matcher-frontend.andreygorogogo.workers.dev/" 
+          />
+        </section>
 
         {/* Центральная колонка: Описание стека */}
         <section id="about" className="md:col-span-6 rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
@@ -228,8 +184,7 @@ const prevSlide = (e: React.MouseEvent) => {
             {status && <p className="mt-2 text-center text-xs font-semibold text-blue-600">{status}</p>}
           </form>
         </section>
-
-      </main>
+       </main>
     </div>
   );
 };
