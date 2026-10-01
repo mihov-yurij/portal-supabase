@@ -127,9 +127,7 @@ export const PortfolioPage: React.FC = () => {
                   <CabinSceneCanvas />
                   <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />
                 </div>
-                <figcaption className="mt-3 text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
-                  Bridge deck · laptop &amp; nautical chart
-                </figcaption>
+                <figcaption className="mt-3 text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400"></figcaption>
               </figure>
             </Reveal>
           </div>
