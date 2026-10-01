@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Award, Briefcase, Download, GraduationCap } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { ProjectCard } from '../components/ProjectCard';
-import { NauticalLaptopCanvas } from '../components/NauticalLaptopCanvas';
 import { CabinSceneCanvas } from '../components/CabinSceneCanvas';
 import { Reveal } from '../components/Reveal';
 
